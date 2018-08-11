@@ -1,14 +1,19 @@
 const express = require('express');
 const socket = require('socket.io');
 
-const app = express();
-const server = app.listen(8000, function () {
-  console.log('listening for requests on port number 8000');
-});
+let fs = require('fs');
+let expApp = express();
 
-app.use(express.static('public'));
+let options = {
+  key: fs.readFileSync('server_key.pem'),
+  cert: fs.readFileSync('server_cert.pem')
+};
 
-const io = socket(server);
+let app = require('https').createServer(options,expApp).listen(8000);
+let io = socket.listen(app);
+
+expApp.use(express.static('public'));
+
 io.on('connection', (socket) => {
     console.log('socket connection successful', socket.id);
 

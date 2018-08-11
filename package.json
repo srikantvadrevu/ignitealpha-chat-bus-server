@@ -4,7 +4,12 @@
   "description": "Server for ignitealpha-chat-bus",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/srikantvadrevu/ignitealpha-chat-bus-server"
   },
   "author": "Srikant Vadrevu",
   "license": "ISC",
